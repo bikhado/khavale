@@ -13,6 +13,54 @@
   <link rel="icon" href="/2d0b56e7e51cf11036ad8734bdb67e2d.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="/725b756a69a7d4c235070e51acd85560.png" sizes="180x180">
   <style>
+    /* CSS cho nút và vị trí */
+    #rsvpButtonContainer {
+      position: fixed;
+      bottom: 60px;
+      /* Để không che nút ẩn/hiện */
+      right: 20px;
+      z-index: 1000;
+      display: block;
+      /* Hiện mặc định */
+    }
+
+    #toggleButton {
+      padding: 5px;
+      background-color: #ccc;
+      color: black;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 5px;
+    }
+
+    /* Ẩn khung khi không cần thiết */
+    .hidden {
+      display: none;
+    }
+
+    iframe {
+      width: 100%;
+      /* Chiều rộng của iframe chiếm toàn bộ chiều rộng của khối chứa */
+      height: 300px;
+      /* Chiều cao của iframe */
+      max-width: 600px;
+      /* Giới hạn chiều rộng tối đa để iframe không vượt quá kích thước mong muốn */
+      box-sizing: border-box;
+      /* Đảm bảo không bị tràn */
+      border: none;
+      /* Loại bỏ viền của iframe */
+      margin: 0 auto;
+      /* Căn giữa nếu khối chứa có chiều rộng lớn hơn */
+    }
+
+    @media (max-width: 600px) {
+      iframe {
+        height: 250px;
+        /* Điều chỉnh chiều cao khi màn hình nhỏ hơn */
+      }
+    }
+
     #countdown {
       flex-grow: 1;
       text-align: center;
@@ -2436,6 +2484,20 @@
         <p style="font-size: smaller;">sẽ diễn ra đám cưới</p>
       </div>
 
+      <div id="rsvpButtonContainer"> <!-- Khung này sẽ hiện ngay từ đầu -->
+        <input type="text" id="guestNameInput" placeholder="Nhập tên của bạn"
+          style="padding: 10px; border-radius: 5px; border: 1px solid #ccc; margin-bottom: 5px; width: 150px;">
+        <input type="text" id="guestPhoneInput" placeholder="Nhập sđt của bạn"
+          style="padding: 10px; border-radius: 5px; border: 1px solid #ccc; margin-bottom: 5px; width: 150px;">
+        <button id="rsvpButton"
+          style="padding: 10px 15px; background-color: #7e4847; color: white; border: none; border-radius: 5px; cursor: pointer;">
+          Xác nhận tham dự
+        </button>
+      </div>
+      <button id="toggleButton"
+        style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; background-color: red; color: white;">Ẩn</button>
+
+
       <!-- Right Side Menu (if you have one) -->
       <input id="menuToggle" type="checkbox" style="display:none;">
       <label id="menuButton" for="menuToggle" style="display: none;">
@@ -2872,6 +2934,22 @@
                 <span id="ZznoUuRRSClFxKeK"
                   style="text-decoration-line:none;color:#7e4847;font-style:normal;font-weight:400;">to see you
                   there!</span>
+              </p>
+              <p id="qvVXOtJ03ekpVnj1"
+                style="color:#7e4847;direction:ltr;font-family:YAEwfYBiD_M-0;margin-left:0em;line-height:1.19980783em;text-align:center;text-transform:none;letter-spacing:-0.052em;">
+              </p>
+            </div>
+            <div id="TcHl1M8xr59VeLK2"
+              style="opacity:1.0;display:flex;box-sizing:border-box;flex-direction:column;justify-content:flex-start;width:100%;height:100%;">
+              <p id="VfKBz1lw7hoxkDXU"
+                style="color:#7e4847;direction:ltr;font-family:YAD1aDS1Jq8-0;margin-left:0em;line-height:1.37499427em;text-align:center;text-transform:none;letter-spacing:0em;">
+                <span id="QFVTU8WXHEQwvBSF" style="text-decoration-line:none;color:#7e4847;font-weight:400;"><strong>Địa
+                    chỉ:</strong> 129 Trần Văn Trà, Thành Phố Quảng Ngãi</span>
+              </p>
+              <p id="VfKBz1lw7hoxkDXU"
+                style="color:#7e4847;direction:ltr;font-family:YAD1aDS1Jq8-0;margin-left:0em;line-height:1.37499427em;text-align:center;text-transform:none;letter-spacing:0em;">
+                <span id="QFVTU8WXHEQwvBSF" style="text-decoration-line:none;color:#7e4847;font-weight:400;"><strong>Bãi
+                    đỗ xe:</strong> Có bãi đỗ xe miễn phí tại địa điểm.</span>
               </p>
             </div>
           </div>
@@ -3599,153 +3677,58 @@
       }
     }
   </style>
-  <div class="footer-overflow-container" lang="en">
-    <div id="modal_backdrop" class="modal-backdrop"></div>
-    <div id="modal" class="report-form-modal" role="dialog">
-      <div class="form-content" id="form_step_terms" style="display: none;" aria-labelledby="termsTitle"
-        aria-describedby="termsDesc" tabindex="0">
-        <h2 id="termsTitle" class="form-title">Terms &amp; Support</h2>
-        <p id="termsDesc" class="form-body">This website has been created with Canva, but the content is User Content
-          that is subject to our <a class="a-link" href="https://www.canva.com/policies/terms-of-use/"
-            target="_blank">Terms of Use</a>. If you see anything that breaches our <a class="a-link"
-            href="https://www.canva.com/policies/acceptable-use-policy/" target="_blank">acceptable use policy</a>,
-          please report it to our content review team. </p>
-        <div class="form-buttons">
-          <button id="form_close_initial" type="button" class="tertiary-button">
-            <span class="button-text"> Close </span>
-          </button>
-          <button id="form_report" data-report-url="https://www.canva.com/help/report-content/?source=design&amp;link="
-            type="button" class="button">
-            <span class="button-text"> Report </span>
-          </button>
-        </div>
-      </div>
-      <div class="form-content" id="form_step_report_reason" style="display: none;" aria-labelledby="reportTitle"
-        aria-describedby="reportDesc" tabindex="0">
-        <h2 id="reportTitle" class="form-title">Report</h2>
-        <p id="reportDesc" class="form-body">Reporting helps Canva ensure its content is appropriate and correctly
-          labelled.</p>
-        <p class="form-body-bold">Why are you reporting this content?</p>
-        <label class="form-radio-input" for="report_reason_0">
-          <input id="report_reason_0" class="radio-button-input" type="radio" name="report_reason" value="0"
-            autocomplete="off" checked="">
-          <span class="radio-button"></span>
-          <span class="form-radio-label"> Inappropriate content </span>
-        </label>
-        <label class="form-radio-input" for="report_reason_1">
-          <input id="report_reason_1" class="radio-button-input" type="radio" name="report_reason" value="1"
-            autocomplete="off">
-          <span class="radio-button"></span>
-          <span class="form-radio-label"> Hateful speech, activities or discrimination </span>
-        </label>
-        <label class="form-radio-input" for="report_reason_2">
-          <input id="report_reason_2" class="radio-button-input" type="radio" name="report_reason" value="2"
-            autocomplete="off">
-          <span class="radio-button"></span>
-          <span class="form-radio-label"> Illegal content </span>
-        </label>
-        <label class="form-radio-input" for="report_reason_3">
-          <input id="report_reason_3" class="radio-button-input" type="radio" name="report_reason" value="3"
-            autocomplete="off">
-          <span class="radio-button"></span>
-          <span class="form-radio-label"> Defamation or harassment </span>
-        </label>
-        <label class="form-radio-input" for="report_reason_4">
-          <input id="report_reason_4" class="radio-button-input" type="radio" name="report_reason" value="4"
-            autocomplete="off">
-          <span class="radio-button"></span>
-          <span class="form-radio-label"> Intellectual Property infringement </span>
-        </label>
-        <label class="form-radio-input" for="report_reason_5">
-          <input id="report_reason_5" class="radio-button-input" type="radio" name="report_reason" value="5"
-            autocomplete="off">
-          <span class="radio-button"></span>
-          <span class="form-radio-label"> Misinformation </span>
-        </label>
-        <label class="form-radio-input" for="report_reason_6">
-          <input id="report_reason_6" class="radio-button-input" type="radio" name="report_reason" value="6"
-            autocomplete="off">
-          <span class="radio-button"></span>
-          <span class="form-radio-label"> Phishing </span>
-        </label>
-        <label class="form-radio-input" for="report_reason_other">
-          <input id="report_reason_other" class="radio-button-input" type="radio" name="report_reason" value="7"
-            autocomplete="off">
-          <span class="radio-button"></span>
-          <span class="form-radio-label"> Something else </span>
-        </label>
-        <div class="form-buttons">
-          <button id="form_cancel" type="button" class="button">
-            <span class="button-text">Cancel</span>
-          </button>
-          <button id="form_submit_reason" type="button" class="submit-button">
-            <span class="button-text">Next</span>
-          </button>
-        </div>
-      </div>
-      <div class="form-content" id="form_step_report_ip" style="display: none;" aria-labelledby="ipTitle"
-        aria-describedby="ipDesc" tabindex="0">
-        <h2 id="ipTitle" class="form-title">Intellectual Property infringement</h2>
-        <p id="ipDesc" class="form-body">Please submit an infringement notice to Canva by following the steps in our <a
-            class="a-link" href="https://www.canva.com/policies/intellectual-property-policy/"
-            target="_blank">Intellectual Property Policy</a>. </p>
-        <div class="form-buttons">
-          <button id="form_go_back_ip" type="button" class="button">
-            <span class="button-text">Back</span>
-          </button>
-          <button id="form_close_ip" type="button" class="submit-button">
-            <span class="button-text">Close</span>
-          </button>
-        </div>
-      </div>
-      <div class="form-content" id="form_step_report_other" style="display: none;" aria-labelledby="otherTitle"
-        aria-describedby="otherDesc" tabindex="0">
-        <h2 id="otherTitle" class="form-title">Something else</h2>
-        <p id="otherDesc" class="form-body">Please contact Canva at <a class="a-link" href="mailto:privacy@canva.com"
-            target="_blank">privacy@canva.com</a> and include the website URL to report other concerns. </p>
-        <div class="form-buttons">
-          <button id="form_go_back_other" type="button" class="button">
-            <span class="button-text">Back</span>
-          </button>
-          <button id="form_close_other" type="button" class="submit-button">
-            <span class="button-text">Close</span>
-          </button>
-        </div>
-      </div>
-      <div class="form-content" id="form_step_captcha" style="display: none;" aria-labelledby="captchaTitle"
-        aria-describedby="captchaDesc" tabindex="0">
-        <h2 id="captchaTitle" class="form-title">Report</h2>
-        <p id="captchaDesc" class="form-body">Let's just make sure you're human.</p>
-        <form id="captcha-form">
-          <div class="g-recaptcha" data-sitekey="6Ldk59waAAAAAMPqkICbJjfMivZLCGtTpa6Wn6zO"></div>
-          <div id="netease-captcha"></div>
-          <p id="error_message_captcha" class="text-danger" style="display: none;"> Please complete the verification.
-          </p>
-          <p id="error_message" class="text-danger" style="display: none;"> We weren't able to submit your report right
-            now. Please try again later. </p>
-          <div class="form-buttons">
-            <button id="form_go_back" type="button" class="button">
-              <span class="button-text">Back</span>
-            </button>
-            <button id="form_submit_captcha" type="submit" class="submit-button">
-              <span class="button-text">Submit</span>
-            </button>
-          </div>
-        </form>
-      </div>
-      <div class="form-content" id="form_step_success" style="display: none;" aria-labelledby="thanksTitle"
-        aria-describedby="thanksDesc" tabindex="0">
-        <h2 id="thanksTitle" class="form-title">Thank you</h2>
-        <p id="thanksDesc" class="form-body">Thanks for flagging this content as inappropriate. Our content review team
-          is on it and will review as soon as possible.</p>
-        <div class="form-buttons">
-          <button id="form_close" type="button" class="submit-button">
-            <span class="button-text"> Close </span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
+  <script>
+
+    const telegramBotToken = '7797805702:AAEcBYrIABnTTfnfuH9F1mp5SwLVvDTct5Q'; // Thay thế YOUR_BOT_TOKEN bằng token bot của bạn
+    const chatId = '1279578955'; // Thay thế YOUR_CHAT_ID bằng chat ID của bạn
+
+    document.getElementById('toggleButton').addEventListener('click', function () {
+      const rsvpContainer = document.getElementById('rsvpButtonContainer');
+      if (rsvpContainer.style.display === 'none') {
+        rsvpContainer.style.display = 'block'; // Hiện khung
+        this.textContent = 'Ẩn'; // Đổi nội dung nút thành "Ẩn"
+        this.style.background = 'red';
+        this.style.color = 'white';
+      } else {
+        rsvpContainer.style.display = 'none'; // Ẩn khung
+        this.textContent = 'Hiện'; // Đổi nội dung nút thành "Hiện"
+        this.style.background = 'blue';
+        this.style.color = 'white';
+      }
+    });
+
+    document.getElementById('rsvpButton').addEventListener('click', function () {
+      const guestName = document.getElementById('guestNameInput').value.trim();
+      const phoneNumber = document.getElementById('guestPhoneInput').value.trim();
+      if (guestName) {
+        alert(`Cảm ơn ${guestName} đã xác nhận tham dự đám cưới!`);
+        sendTelegramMessage(guestName, phoneNumber); // Gửi thông điệp đến bot Telegram
+        document.getElementById('guestNameInput').value = ''; // Xóa ô nhập tên sau khi xác nhận
+        document.getElementById('guestPhoneInput').value = '';
+      } else {
+        alert('Vui lòng nhập tên của bạn!');
+      }
+    });
+
+    function sendTelegramMessage(guestName, phoneNumber) {
+      const message = `Khách mời xác nhận tham dự - Tên: ${guestName} | số đt: ${phoneNumber}`;
+      const url = `https://api.telegram.org/bot${telegramBotToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+
+      fetch(url)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Lỗi khi gửi tin nhắn đến Telegram');
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log('Tin nhắn đã gửi:', data);
+        })
+        .catch(error => {
+          console.error('Có lỗi xảy ra:', error);
+        });
+    }
+  </script>
 </body>
 
 </html>
